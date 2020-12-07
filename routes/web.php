@@ -13,37 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\UtamaController;
+
 Route::get('/', function () {
     return view ('welcome');
 });
 
-Route::get('/about-me', function () {
-    return ('Nama Saya <b>Yoga Ramadhan</b>');
+Route::get('home', function () {
+    return view('main');
 });
 
-Route::get('/nim', function () {
-    return ('NIM <b>1811102441101</b>');
-});
+Route::get("/tema/bootstrap",[UtamaController::class,"index"]);
 
-Route::get('/ayam', function () {
-    return ('Ayam <b>KFC</b> Itu Enak');
-});
+Route::get('/about', [UtamaController::class,"about"]);
+Route::get('/home', [UtamaController::class,"home"]);
+Route::get('/beritaolahraga', [UtamaController::class,"beritaolahraga"]);
+Route::get('/beritapolitik', [UtamaController::class,"beritapolitik"]);
+Route::get('/datadiri', [UtamaController::class,"datadiri"]);
 
-Route::get('/hari', function () {
-    return ('1 Minggu <b>Ada</b> 7 Hari');
-});
-
-Route::get('/kuliah', function () {
-    return ('Kuliah <b>Online</b> Itu Indah');
-});
-
-use App\Http\Controllers\ControllerSatu;
-use App\Http\Controllers\ControllerDua;
-
-Route::get("/percobaan1",[ControllerSatu::class,"percobaan1"]);
-Route::get("/percobaan2",[ControllerSatu::class,"percobaan2"]);
-Route::get("/percobaan3",[ControllerSatu::class,"percobaan3"]);
-
-Route::get("/cobacoba1",[ControllerDua::class,"cobacoba1"]);
-Route::get("/cobacoba2",[ControllerDua::class,"cobacoba2"]);
-Route::get("/cobacoba3",[ControllerDua::class,"cobacoba3"]);
+Route::post('/proses', [UtamaController::class,"proses"]);
+Route::post('/input', [UtamaController::class,"input"]);
